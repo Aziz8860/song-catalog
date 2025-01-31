@@ -1,10 +1,13 @@
 package memberships
 
-import "github.com/Aziz8860/song-catalog/internal/models/memberships"
+import (
+	"github.com/Aziz8860/song-catalog/internal/models/memberships"
+)
 
 func (r *repository) CreateUser(model memberships.User) error {
 	// karena pake Gorm, ga perlu mendefinisikan query
-	return r.db.Create(model).Error
+	// debug: fmt.Println(r.db)
+	return r.db.Create(&model).Error
 }
 
 func (r *repository) GetUser(email, username string, id uint) (*memberships.User, error) {
